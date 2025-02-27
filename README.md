@@ -13,13 +13,14 @@ The AC-1M consists of data from the City of Amsterdam. This data is publicly ava
 3. Using the url column, the images can be downloaded one by one. These need to be stored in the following directory structure: AC1M/{nb}/{cluster}{filename}. If the data is split like described at 2. this would give AC1M_train/{nb}/{cluster}{filename} and AC1M_test/{nb}/{cluster}{filename}
 4. If necessary the antenna can be masked by requesting the heading parameter from the metadata_url. Make sure to mask both the antenna at the heading location as well as 180 degree opposite.
 
+## Train EMPLACE
+
 The bash code used to run all experiments is shown in run_experiments.sh. To run all the experiments:
 
 1. Install the environment from the environment.yml: conda env create -f environment.yml
 2. Unzip ATM_square_equirectangular.zip (Buildings) and the ATM_square_equirectangular_boom.zip (Trees)
 3. Run all the experiments: bash run_experiments.sh
 
-
-For example to train SI-1 EMPLACE on 4 gpus run:
+Additionally, to just train SI-1 EMPLACE on 4 gpus run:
 
 ```python ACM_main.py --multigpu=4 --input_dir=antenna_700_210_train --pos_prox=1 --pos=31 --neg=375 --total_epochs=200 --amount_of_clusters=10000 --image_size 210 700 --patch_size=14 --batch_size=8 --adjusted_batch_size=64 --cutandflip=1 --encoder_architecture=DINODINO14 --grad_clip=.5 --temp_congruent=1 --loss=linear```
