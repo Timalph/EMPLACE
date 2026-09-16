@@ -8,7 +8,7 @@ This repository contains code and instructions to run EMPLACE introduced in the 
 ## AC-1M 
 The AC-1M consists of data from the City of Amsterdam. This data is publicly available, but due to their continuously updating people blurring algorithm the latest version of these images have to be downloaded. As such I can not directly distribute the images used for our models. The instructions on how to retrieve the AC-1M are as follows:
 
-1. The metadata for all images in the AC-1M is stored in the AC1M.csv file which is downloadable [here](www.bit.ly/4qYE61g). This file has four columns: nb (neighbourhood), cluster, filename, url, and metadata_url.
+1. The metadata for all images in the AC-1M is stored in the AC1M.csv file which is downloadable [here](https://bit.ly/4qYE61g). This file has four columns: nb (neighbourhood), cluster, filename, url, and metadata_url.
 2. If you only want the data you can skip this point: It's recommended to split this file into two csvs: 'AC-1M_train.csv' and 'AC-1M_test.csv' (90/10). Make sure to make the split along the clusters, not along the individual images. A pandas groubpy('cluster') is recommended.
 3. Using the url column, the images can be downloaded one by one. These need to be stored in the following directory structure: AC1M/{nb}/{cluster}{filename}. If the data is split like described at 2. this would give AC1M_train/{nb}/{cluster}{filename} and AC1M_test/{nb}/{cluster}{filename}
 4. If necessary the antenna can be masked by requesting the heading parameter from the metadata_url. Make sure to mask both the antenna at the heading location as well as 180 degree opposite.
